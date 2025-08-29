@@ -17,7 +17,7 @@ def compiles():
 @check50.check(compiles)
 def harry():
     """Un rectangle de 5 par 5 a une aire de 25"""
-    check_debug(largueur=5, longueur=5, aire=25)
+    check_debug(largeur=5, longueur=5, aire=25)
 
 
 @check50.check(compiles)
