@@ -1,0 +1,61 @@
+import check50
+import check50.c
+
+
+@check50.check()
+def exists():
+    """debug.c exists"""
+    check50.exists("rectangle.c")
+
+
+@check50.check(exists)
+def compiles():
+    """debug.c compiles"""
+    check50.c.compile("rectangle.c", lcs50=True)
+
+
+@check50.check(compiles)
+def aire5x5():
+    """Un rectangle de 5 par 5 a une aire de 25.00"""
+    check_debug(largeur="5", longueur="5", aire="25.00")
+
+
+@check50.check(compiles)
+def aire2x5():
+    """Un rectangle de 2 par 5 a une aire de 10.00"""
+    check_debug(largeur="2", longueur="5", aire="10.00")
+
+@check50.check(compiles)
+def aire2x5():
+    """Un rectangle de 11.5 par 100 a une aire de 1150.00"""
+    check_debug(largeur="11.5", longueur="100", aire="1150.00")
+
+@check50.check(compiles)
+def largeurNegative():
+    """Largeur Negative"""
+    check_negative(largeur="-0.5", longueur="100")
+
+@check50.check(largeurNegative)
+def longueurNegative():
+    """Largeur Negative"""
+    check_negative(largeur="0.5", longueur="-100")  
+
+@check50.check(largeurNegative)
+def valeursNegatives():
+    """Longueur Negative"""
+    check_negative(largeur="-0.5", longueur="-100") 
+
+@check50.check(aireNegative)
+def aireNulle():
+    """Aire Nulle"""
+    check_debug(largeur="0", longueur="100", aire="0.00")
+    check_debug(largeur="100", longueur="0", aire="0.00")
+
+
+
+# Helpers
+def check_debug(largeur: str, longueur: str, aire: str):
+    actual = check50.run("./rectangle").stdin(largeur).stdin(longueur).stdout(f"L'aire du rectangle est de {aire}")
+
+def check_negative(largeur: str, longueur: str):
+    actual = check50.run("./rectangle").stdin(largeur).stdin(longueur).stdout(f"ERRUR : Valeur negative interdite.")
