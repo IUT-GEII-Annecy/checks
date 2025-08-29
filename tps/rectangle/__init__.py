@@ -27,5 +27,5 @@ def dumbledore():
 
 
 # Helpers
-def check_debug(name: str, place: str):
+def check_debug(largeur: float, longueur: float, aire: float):
     check50.run("./debug").stdin(largeur).stdin(longueur).stdout(f"L'aire du rectangle est de {aire}!")
