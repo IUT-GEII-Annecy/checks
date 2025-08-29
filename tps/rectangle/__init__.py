@@ -28,5 +28,5 @@ def aire2x5():
 
 # Helpers
 def check_debug(largeur: float, longueur: float, aire: str):
-    actual = check50.run("./rectangle").stdin(largeur).stdin(longueur).stdout(f"L'aire du rectangle est de {aire}\")
+    actual = check50.run("./rectangle").stdin(largeur).stdin(longueur).stdout(f"L'aire du rectangle est de {aire}")
     
