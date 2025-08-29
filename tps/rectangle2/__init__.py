@@ -58,4 +58,4 @@ def check_debug(largeur: str, longueur: str, aire: str):
     actual = check50.run("./rectangle").stdin(largeur).stdin(longueur).stdout(f"L'aire du rectangle est de {aire}")
 
 def check_negative(largeur: str, longueur: str):
-    actual = check50.run("./rectangle").stdin(largeur).stdin(longueur).stdout(f"ERRUR : Valeur negative interdite.")
+    actual = check50.run("./rectangle").stdin(largeur).stdin(longueur).stdout(f"ERREUR : Valeur negative interdite.")
