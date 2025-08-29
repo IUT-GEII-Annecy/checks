@@ -45,7 +45,7 @@ def valeursNegatives():
     """Longueur Negative"""
     check_negative(largeur="-0.5", longueur="-100") 
 
-@check50.check(aireNegative)
+@check50.check(valeurs)
 def aireNulle():
     """Aire Nulle"""
     check_debug(largeur="0", longueur="100", aire="0.00")
