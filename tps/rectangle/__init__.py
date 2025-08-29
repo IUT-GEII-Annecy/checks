@@ -25,6 +25,11 @@ def aire2x5():
     """Un rectangle de 2 par 5 a une aire de 10.00"""
     check_debug(largeur="2", longueur="5", aire="10.00")
 
+@check50.check(compiles)
+def aire2x5():
+    """Un rectangle de 10.5 par 100 a une aire de 1050.00"""
+    check_debug(largeur="10.5", longueur="100", aire="1050.00")
+
 
 # Helpers
 def check_debug(largeur: str, longueur: str, aire: str):
