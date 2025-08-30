@@ -33,5 +33,5 @@ def cercle0():
 
 # Helpers
 def check_debug(rayon: str, circonference: str, aire: str):
-    actual = check50.run("./cercle").stdin(rayon).stdout(f"Aire : {aire}").stdout(f"Perimetre : {perimetre}")
+    actual = check50.run("./cercle").stdin(rayon).stdout(f"Aire : {aire}").stdout(f"Perimetre : {circonference}")
     
