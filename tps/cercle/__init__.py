@@ -23,7 +23,7 @@ def rayon6():
 @check50.check(compiles)
 def rayon100():
     """Cercle de rayon 100"""
-    check_debug(rayon="100", circonference="628.319", aire="31415.93")
+    check_debug(rayon="100", circonference="628.32", aire="31415.93")
 
 @check50.check(compiles)
 def cercle0():
