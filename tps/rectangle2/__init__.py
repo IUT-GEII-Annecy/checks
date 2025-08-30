@@ -4,13 +4,13 @@ import check50.c
 
 @check50.check()
 def exists():
-    """debug.c exists"""
+    """rectangle.c existe"""
     check50.exists("rectangle.c")
 
 
 @check50.check(exists)
 def compiles():
-    """debug.c compiles"""
+    """rectangle.c compile sans erreur"""
     check50.c.compile("rectangle.c", lcs50=True)
 
 
@@ -32,17 +32,17 @@ def aire2x5():
 
 @check50.check(compiles)
 def largeurNegative():
-    """Largeur Negative"""
+    """Largeur négative"""
     check_negative(largeur="-0.5", longueur="100")
 
 @check50.check(largeurNegative)
 def longueurNegative():
-    """Largeur Negative"""
+    """Longueur négative"""
     check_negative(largeur="0.5", longueur="-100")  
 
-@check50.check(largeurNegative)
+@check50.check(longueurNegative)
 def valeursNegatives():
-    """Longueur Negative"""
+    """Les deux valeurs négative"""
     check_negative(largeur="-0.5", longueur="-100") 
 
 @check50.check(valeursNegatives)
@@ -54,7 +54,7 @@ def aireNulle():
 
 
 # Helpers
-def check_debug(largeur: str, longueur: str, aire: str):
+def check_debug(largeur: str, longueur: str, aire: str):2
     actual = check50.run("./rectangle").stdin(largeur).stdin(longueur).stdout(f"L'aire du rectangle est de {aire}")
 
 def check_negative(largeur: str, longueur: str):
