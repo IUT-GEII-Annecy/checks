@@ -1,7 +1,7 @@
 check50:
   files: &check50_files
     - !exclude "*"
-    - !require cercle.c
+    - !require tacos.c
 
 submit50:
   files: *check50_files
