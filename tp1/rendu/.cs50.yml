@@ -1,0 +1,12 @@
+check50:
+  files: &check50_files
+    - !exclude "*"
+    - !require 0_hello/hello.c
+    - !require 1_fixme/fixme.c
+    - !require 2_geometrie/rectangle.c
+    - !require 2_geometrie/cercle.c
+    - !require 3_age/age.c
+    - !require 4_tacos/tacos.c
+
+submit50:
+  files: *check50_files

@@ -1,17 +1,38 @@
 import check50
 import check50.c
 
+from pathlib import Path
+from contextlib import chdir, nullcontext  # <-- standard lib
+
+EXER_DIR = "1_fixme"
+MAIN = "fixme.c"
+
+def exercise_cwd():
+    """
+    Si fixme.c est à la racine → pas de cd.
+    Si fixme.c est dans 1_fixme/ → cd 1_fixme.
+    Sinon → erreur explicite.
+    """
+    if Path(MAIN).exists():
+        return nullcontext()
+    elif Path(EXER_DIR, MAIN).exists():
+        return chdir(EXER_DIR)   # <-- au lieu de check50.cd(...)
+    else:
+        raise check50.Failure(f"{MAIN} introuvable (./{MAIN} ou ./{EXER_DIR}/{MAIN}).")
+
 
 @check50.check()
-def exists():
-    """debug.c exists"""
-    check50.exists("debug.c")
+def fixme_exists():
+    """fixme.c exists"""
+    with exercise_cwd():
+        check50.exists(MAIN)
 
 
-@check50.check(exists)
+@check50.check(fixme_exists)
 def compiles():
-    """debug.c compiles"""
-    check50.c.compile("debug.c", lcs50=True)
+    """fixme.c compiles"""
+    with exercise_cwd():
+        check50.c.compile(MAIN, lcs50=True)
 
 
 @check50.check(compiles)
@@ -28,4 +49,5 @@ def dumbledore():
 
 # Helpers
 def check_debug(name: str, place: str):
-    check50.run("./debug").stdin(name).stdin(place).stdout(f"Hello, {name}, from {place}!")
+    with exercise_cwd():
+        check50.run("./fixme").stdin(name).stdin(place).stdout(f"Hello, {name}, from {place}!")

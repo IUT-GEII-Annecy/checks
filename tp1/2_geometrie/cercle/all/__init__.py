@@ -54,9 +54,18 @@ def cercle0():
     """Cercle : Cercle de rayon nul"""
     check_debug(rayon="0", circonference="0.00", aire="0.00")
 
+@check50.check(cercle0)
+def rayonNegatif():
+    """Cercle : Rayon négatif"""
+    check_negatif("-0.5")
+
 
 # Helpers
 def check_debug(rayon: str, circonference: str, aire: str):
     with exercise_cwd():
         actual = check50.run("./cercle").stdin(rayon).stdout(f"Aire : {aire}\n").stdout(f"Perimetre : {circonference}")
     
+def check_negatif(rayon: str):
+    with exercise_cwd():
+        check50.run("./cercle").stdin(rayon).stdout("ERREUR : Valeurs negatives interdites.")
+
