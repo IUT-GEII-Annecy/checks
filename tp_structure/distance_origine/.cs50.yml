@@ -1,0 +1,9 @@
+check50:
+  files: &check50_files
+    - !exclude "*"
+    - !require distance_origine.c
+    - !require headers/geometrie.h
+    - !require sources/geometrie.c
+
+submit50:
+  files: *check50_files
