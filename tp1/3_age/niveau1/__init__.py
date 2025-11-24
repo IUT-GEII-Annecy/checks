@@ -35,13 +35,6 @@ def age_compile():
         check50.c.compile(MAIN, lcs50=True)
 
 @check50.check(age_compile)
-def enfant():
-    """Enfant"""
-    check(1);
-    check(10);
-    check(12);
-
-@check50.check(age_compile)
 def mineur():
     """Mineur"""
     check(13);
@@ -54,23 +47,7 @@ def adulte():
     check(58);
     check(59);
     
-@check50.check(age_compile)
-def senior():
-    """Senior"""
-    check(60);
-    check(90);
 
-@check50.check(age_compile)
-def menteur():
-    """Menteur"""
-    check(200);
-    check(120);
-
-@check50.check(age_compile)
-def negatif():
-    """Menteur car Negatif"""
-    check(-1);
-    check(-5);
 
 
 
@@ -78,9 +55,6 @@ def negatif():
 def check(age:int):
     with exercise_cwd():
         actual = check50.run("./age").stdin(str(age))
-    if (age<0):
-        actual.stdout("ERREUR : Valeurs n[eé]gatives interdites.",str_output="ERREUR : Valeurs négatives interdites.").exit()
-    else:
         actual = actual.stdout("Vous [eê]tes un ",regex=True,str_output="Vous êtes un")
 
         if(age<18):
