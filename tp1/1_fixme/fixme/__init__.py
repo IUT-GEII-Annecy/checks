@@ -29,19 +29,19 @@ def fixme_exists():
 
 
 @check50.check(fixme_exists)
-def compiles():
+def fixme_compiles():
     """fixme.c compiles"""
     with exercise_cwd():
         check50.c.compile(MAIN, lcs50=True)
 
 
-@check50.check(compiles)
+@check50.check(fixme_compiles)
 def harry():
     """Input of \"Harry\" and \"Godrick's Hollow\" produces output \"Hello, Harry, from Godrick's Hollow!\""""
     check_debug(name="Harry", place="Godrick's Hollow")
 
 
-@check50.check(compiles)
+@check50.check(fixme_compiles)
 def dumbledore():
     """Input of \"Dumbledore\" and \"Mould-on-the-Wold\" produces output \"Hello, Dumbledore, from Mould-on-the-Wold!\""""
     check_debug(name="Dumbledore", place="Mould-on-the-Wold")

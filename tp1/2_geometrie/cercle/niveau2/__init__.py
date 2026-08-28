@@ -22,7 +22,7 @@ def exercise_cwd():
     else:
         raise check50.Failure(f"{MAIN} introuvable (./{MAIN} ou ./{EXER_DIR}/{MAIN}).")
         
-check50.import_checks("../cercle/niveau1")
+check50.import_checks("../../cercle/niveau1")
 from niveau1 import *
 
 @check50.check(cercle0)

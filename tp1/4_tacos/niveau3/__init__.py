@@ -18,6 +18,13 @@ from niveau2 import *
 
 
 @check50.check(tacos_compile)
+def beaucoup():
+    """9 Tacos, 4 Kebabs"""
+    # Redéfini par rapport à niveau1/niveau2 : à partir du niveau3, 13
+    # articles (9+4) dépassent le seuil de 5 et déclenchent la réduction.
+    check_reduction(9, 4)
+
+@check50.check(tacos_compile)
 def tacos_reduction_appliquee():
     """Réduction de 10% appliquée au-delà de 5 articles"""
     check_reduction(4, 3)  # 7 articles

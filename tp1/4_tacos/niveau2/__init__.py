@@ -8,8 +8,8 @@ PRIX_KEBAB = 5.50
 STOCK_TACOS = 10
 STOCK_KEBAB = 5
 
-check50.import_checks("../tacos_niveau1")
-from tacos_niveau1 import *
+check50.import_checks("../niveau1")
+from niveau1 import *
 
 @check50.check(tacos_compile)
 def tacos_hors_stock():
@@ -53,7 +53,7 @@ def check(nombre_de_tacos:int,  nombre_de_kebab:int):
         actual = actual.stdout("Désolé, nous n'avons pas assez de Kebab")
     else:
         montant_total = nombre_de_tacos * PRIX_TACOS + nombre_de_kebab * PRIX_KEBAB
-        actual = actual.stdout(f"Montant total : {total:.2f} euros")
+        actual = actual.stdout(f"Montant total : {montant_total:.2f} euros")
     
     actual = actual.stdout(f"Merci pour votre commande chez (.*)", regex=True)
 

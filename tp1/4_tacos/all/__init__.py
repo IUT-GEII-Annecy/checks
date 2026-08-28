@@ -124,6 +124,8 @@ def check(nombre_de_tacos:int,  nombre_de_kebab:int):
             actual = actual.stdout("Désolé, nous n'avons pas assez de Kebab")
         else:
             montant_total = nombre_de_tacos * PRIX_TACOS + nombre_de_kebab * PRIX_KEBAB
+            if nombre_de_tacos + nombre_de_kebab > 5:
+                montant_total *= REDUCTION
             actual = actual.stdout(f"Montant total : {montant_total:.2f} euros")
         
         actual = actual.stdout(f"Merci pour votre commande chez (.*)", regex=True)
