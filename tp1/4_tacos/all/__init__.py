@@ -84,7 +84,27 @@ def tacos_hors_stock_tout():
     """Hors stock Tacos et Kebab"""
     check(11, 6)
 
+@check50.check(tacos_compile)
+def tacos_reduction_appliquee():
+    """Réduction de 10% appliquée au-delà de 5 articles"""
+    check_reduction(4, 3)  # 7 articles
 
+@check50.check(tacos_compile)
+def tacos_pas_de_reduction_a_cinq():
+    """Pas de réduction pour exactement 5 articles"""
+    check(2, 3)  # 5 articles, montant plein attendu
+
+
+REDUCTION = 0.9  # -10% au-delà de 5 articles au total
+
+def check_reduction(nombre_de_tacos: int, nombre_de_kebab: int):
+    montant_plein = nombre_de_tacos * PRIX_TACOS + nombre_de_kebab * PRIX_KEBAB
+    montant_reduit = montant_plein * REDUCTION
+    with exercise_cwd():
+        actual = check50.run("./tacos").stdout("Bonjour, bienvenu chez ")
+        actual = actual.stdin(str(nombre_de_tacos)).stdin(str(nombre_de_kebab))
+        actual = actual.stdout(f"Montant total : {montant_reduit:.2f} euros")
+        actual = actual.stdout(f"Merci pour votre commande chez (.*)", regex=True)
 
 
 # Helpers
